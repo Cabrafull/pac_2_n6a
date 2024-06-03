@@ -36,7 +36,9 @@ export class TodosComponent {
     this.showTodos = this.todos.filter(t => t.title.includes(this.searchText))
   }
 
-  public searchTitleText(searchValue: string): void {
+  public searchTitleText(event: Event): void {
+    const searchValue = (event.target as HTMLInputElement).value;
+
     this.searchText = searchValue;
   }
 

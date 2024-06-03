@@ -2,8 +2,8 @@
   <h1 class="mt-5">Realizar la consigna debajo de este mensaje</h1>
 </div>
 
-<div *ngIf="!hayError">
-  <button *ngFor="let todo of showTodos" (click)="(retrieveOneTodo($event.target.value))">
+<div>
+  <button *ngFor="let todo of showTodos" (click)="(retrieveOneTodo(todo))">
     {{todo.title}} de usuario: ({{todo.userId}})
   </button>
 </div>
@@ -13,7 +13,7 @@
 </div>
 
 <div>
-  <input type="text" placeholder="Search by title" (change)="searchTitleText($event.target.value)">
+  <input type="text" placeholder="Search by title" (change)="searchTitleText($event)">
   <button class="btn btn-primary" (click)="(makeSearch)">Search</button>
 </div>
 
