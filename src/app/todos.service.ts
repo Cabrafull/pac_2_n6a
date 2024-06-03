@@ -15,4 +15,10 @@ export class TodosService {
 
     return this.http.get<TodoModel[]>(uri);
   }
+
+  public oneTodo(todoId: number): Observable<TodoModel>{
+    const uri = formatURL(Endpoints.TODOS) + `/${todoId}`;
+
+    return this.http.get<TodoModel>(uri);
+  }
 }

@@ -2,6 +2,21 @@
   <h1 class="mt-5">Realizar la consigna debajo de este mensaje</h1>
 </div>
 
+<div *ngIf="!hayError">
+  <button *ngFor="let todo of showTodos" (click)="(retrieveOneTodo($event.target.value))">
+    {{todo.title}} de usuario: ({{todo.userId}})
+  </button>
+</div>
+
+<div *ngIf="hayError">
+  No se encontro nada
+</div>
+
 <div>
-  <button class="btn btn-primary" (click)="randomMethod()">Search</button>
+  <input type="text" placeholder="Search by title" (change)="searchTitleText($event.target.value)">
+  <button class="btn btn-primary" (click)="(makeSearch)">Search</button>
+</div>
+
+<div *ngIf="currentTodo != null">
+  {{currentTodo.title}} de usuario: ({{currentTodo.userId}}), completed? {{currentTodo.completed}}
 </div>

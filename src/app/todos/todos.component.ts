@@ -10,7 +10,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class TodosComponent {
   public todos: TodoModel[] = [];
+  public showTodos: TodoModel[] = [];
   public hayError = false;
+  public searchText: string = "";
+  public currentTodo: TodoModel | null = null;
 
   constructor(private todosService: TodosService) {}
 
@@ -23,13 +26,26 @@ export class TodosComponent {
     )
   }
 
+  public retrieveOneTodo(clickedTodo: TodoModel): void {
+    this.todosService.oneTodo(clickedTodo.id).subscribe(
+      (todo: TodoModel) => this.currentTodo = todo
+    )
+  }
+
+  public makeSearch(): void {
+    this.showTodos = this.todos.filter(t => t.title.includes(this.searchText))
+  }
+
+  public searchTitleText(searchValue: string): void {
+    this.searchText = searchValue;
+  }
+
   private loadTodos(todosResponse: TodoModel[]): void {
     this.todos = todosResponse;
+    this.showTodos = todosResponse;
   }
 
   private showError(error: HttpErrorResponse): void{
     this.hayError = true;
   }
-
-  randomMethod() {}
 }
