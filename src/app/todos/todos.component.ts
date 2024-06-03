@@ -2,9 +2,12 @@ import { Component } from '@angular/core';
 import { TodosService } from '../todos.service';
 import { TodoModel } from '../models/todo-model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-todos',
+  standalone: true,
+  imports: [NgFor, NgIf],
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss'],
 })

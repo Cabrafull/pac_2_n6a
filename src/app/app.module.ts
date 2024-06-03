@@ -13,10 +13,9 @@ import { TodosComponent } from './todos/todos.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    TodosComponent,
     ConsignaComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, TodosComponent],
   providers: [TodosService],
   bootstrap: [AppComponent],
 })
